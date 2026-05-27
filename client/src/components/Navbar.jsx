@@ -51,7 +51,7 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
             CGPA Calc
           </button>
           <a 
-            href="https://ums.lpu.in/ums" 
+            href="https://ums.lpu.in/lpuums/"
             target="_blank" 
             rel="noopener noreferrer" 
             style={styles.navLinkExternal}
@@ -108,9 +108,8 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
             CGPA Calculator
           </button>
           <a 
-            href="https://ums.lpu.in/ums" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="https://ums.lpu.in/lpuums/" 
+            target="_blank"
             style={styles.mobileLinkExternal}
           >
             UMS Portal ↗
