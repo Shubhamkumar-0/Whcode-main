@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { BookOpen, LogIn, LogOut, Menu, X, Calculator, MessageSquare, GraduationCap } from 'lucide-react';
 
-function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, onLogout }) {
+function Navbar({ user = null, onLoginClick = () => {}, onLogout = () => {} }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (view, action = null) => {
-    setView(view);
-    setSelectedCourse(null);
+  const handleNavClick = (action = null) => {
     setMobileMenuOpen(false);
-    
     if (action) {
       setTimeout(() => {
         const element = document.getElementById(action);
@@ -16,6 +13,9 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
+    } else {
+      // No specific action, scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -23,7 +23,7 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
     <nav style={styles.navContainer}>
       <div style={styles.nav}>
         {/* Logo */}
-        <div style={styles.logo} onClick={() => handleNavClick('home')}>
+        <div style={styles.logo} onClick={() => handleNavClick()}>
           <div style={styles.logoIcon}>
             <GraduationCap size={24} color="#6366f1" />
           </div>
@@ -33,20 +33,20 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
         {/* Desktop Links */}
         <div className="desktop-only" style={styles.links}>
           <button 
-            style={{...styles.navLink, ...(currentView === 'home' ? styles.activeLink : {})}} 
-            onClick={() => handleNavClick('home')}
+            style={styles.navLink} 
+            onClick={() => handleNavClick()}
           >
             Home
           </button>
           <button 
             style={styles.navLink} 
-            onClick={() => handleNavClick('home', 'semesters-section')}
+            onClick={() => handleNavClick('semesters-section')}
           >
             Semesters
           </button>
           <button 
             style={styles.navLink} 
-            onClick={() => handleNavClick('home', 'calculator-section')}
+            onClick={() => handleNavClick('calculator-section')}
           >
             CGPA Calc
           </button>
@@ -90,20 +90,20 @@ function Navbar({ currentView, setView, setSelectedCourse, user, onLoginClick, o
       {mobileMenuOpen && (
         <div style={styles.mobileMenu}>
           <button 
-            style={{...styles.mobileLink, ...(currentView === 'home' ? styles.mobileActiveLink : {})}} 
-            onClick={() => handleNavClick('home')}
+            style={styles.mobileLink} 
+            onClick={() => handleNavClick()}
           >
             Home
           </button>
           <button 
             style={styles.mobileLink} 
-            onClick={() => handleNavClick('home', 'semesters-section')}
+            onClick={() => handleNavClick('semesters-section')}
           >
             Semesters
           </button>
           <button 
             style={styles.mobileLink} 
-            onClick={() => handleNavClick('home', 'calculator-section')}
+            onClick={() => handleNavClick('calculator-section')}
           >
             CGPA Calculator
           </button>
@@ -181,16 +181,13 @@ const styles = {
     color: "#fff",
   },
   orangeText: {
-    color: "#f97316", // LPU Orange
+    color: "#f97316",
     fontWeight: "900",
   },
   links: {
     display: "flex",
     alignItems: "center",
     gap: "24px",
-    '@media (maxWidth: 768px)': {
-      display: 'none',
-    }
   },
   navLink: {
     background: 'none',
@@ -213,10 +210,6 @@ const styles = {
     cursor: 'pointer',
     padding: '6px 12px',
     transition: 'var(--transition-smooth)',
-  },
-  activeLink: {
-    color: 'var(--primary)',
-    background: 'rgba(99, 102, 241, 0.08)',
   },
   userSection: {
     display: 'flex',
@@ -272,10 +265,6 @@ const styles = {
     padding: '4px',
     borderRadius: '6px',
     transition: 'var(--transition-smooth)',
-    ':hover': {
-      color: 'var(--danger)',
-      background: 'rgba(239, 68, 68, 0.1)',
-    }
   },
   mobileToggle: {
     display: 'none',
@@ -307,11 +296,6 @@ const styles = {
     borderRadius: '8px',
     width: '100%',
     cursor: 'pointer',
-  },
-  mobileActiveLink: {
-    color: 'var(--primary)',
-    background: 'rgba(99, 102, 241, 0.08)',
-    fontWeight: '600',
   },
   mobileLinkExternal: {
     color: 'var(--text-secondary)',
@@ -373,11 +357,4 @@ const styles = {
   }
 };
 
-// Add CSS media query simulation for styles object support
-// Simple media query fallback via inline window listeners is usually implemented,
-// but for standard React, we can let desktop/mobile render based on standard media queries defined in index.css, 
-// or simply use CSS rules inside index.css.
-// To make it easy, we'll put standard CSS classes in index.css for responsive visibility and use standard className attributes!
-// Let's make sure Navbar handles layout using css classes.
-// I will write custom styles in index.css to make desktop links hide on mobile. Let's do that!
 export default Navbar;
