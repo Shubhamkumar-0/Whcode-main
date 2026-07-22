@@ -20,7 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar onResetCourse={() => setSelectedCourse(null)} />
       <Routes>
         <Route
           path="/"

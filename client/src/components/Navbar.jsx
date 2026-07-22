@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { GraduationCap, Menu, X, LogIn, LogOut } from 'lucide-react';
+import { GraduationCap, Menu, X, LogIn, LogOut, Sun, Moon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
-
-function Navbar() {
+function Navbar({ onResetCourse }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { darkMode, toggleDarkMode } = useTheme();
 
   const handleNavClick = (action = null) => {
     setMobileMenuOpen(false);
-    if (action) {
-      setTimeout(() => {
+    if (onResetCourse) {
+      onResetCourse();
+    }
+    setTimeout(() => {
+      if (action) {
         const element = document.getElementById(action);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -70,8 +74,17 @@ function Navbar() {
             </a>
           </div>
 
-          {/* User profile / Login */}
+          {/* User profile / Login / Dark Mode Toggle */}
           <div style={styles.userSection}>
+            {/* Dark Mode Toggle Button */}
+            <button 
+              style={styles.themeToggleBtn} 
+              onClick={toggleDarkMode}
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#475569" />}
+            </button>
+
             {user ? (
               <div style={styles.profileContainer}>
                 <div className="desktop-only" style={styles.userInfo}>
@@ -91,7 +104,7 @@ function Navbar() {
             
             {/* Mobile Menu Toggle */}
             <button className="mobile-only" style={styles.mobileToggle} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X size={24} color="#1f2937" /> : <Menu size={24} color="#1f2937" />}
+              {mobileMenuOpen ? <X size={24} style={{ color: 'var(--text-primary)' }} /> : <Menu size={24} style={{ color: 'var(--text-primary)' }} />}
             </button>
           </div>
         </div>
@@ -154,20 +167,21 @@ function Navbar() {
 
 const styles = {
   topBanner: {
-    background: 'linear-gradient(90deg, #fed7aa 0%, #fde68a 100%)',
-    color: '#9a3412',
+    background: 'var(--top-banner-bg)',
+    color: 'var(--top-banner-text)',
     fontSize: '13px',
     fontWeight: '600',
     textAlign: 'center',
     padding: '7px 16px',
-    borderBottom: '1px solid #fbd5a5',
+    borderBottom: '1px solid var(--top-banner-border)',
+    fontFamily: 'var(--font-heading)',
   },
   navContainer: {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    background: '#ffffff',
-    borderBottom: '2px solid #e5e7eb',
+    background: 'var(--nav-bg)',
+    borderBottom: '2px solid var(--nav-border)',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.06)',
     transition: 'all 0.3s ease',
   },
@@ -190,18 +204,19 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#fff7ed',
+    background: 'var(--bg-card-header)',
     width: '40px',
     height: '40px',
     borderRadius: '10px',
-    border: '1px solid #ffedd5',
+    border: '1px solid var(--border-glass)',
     boxShadow: '0 2px 5px rgba(255, 107, 0, 0.15)',
   },
   logoText: {
     fontWeight: 800,
     fontSize: '22px',
+    fontFamily: 'var(--font-heading)',
     letterSpacing: '-0.02em',
-    color: '#111827',
+    color: 'var(--text-primary)',
   },
   orangeText: {
     color: '#ff6b00',
@@ -216,8 +231,9 @@ const styles = {
   navLink: {
     background: 'transparent',
     border: 'none',
-    color: '#374151',
+    color: 'var(--text-primary)',
     fontSize: '15px',
+    fontFamily: 'var(--font-heading)',
     fontWeight: 600,
     cursor: 'pointer',
     padding: '8px 14px',
@@ -230,6 +246,7 @@ const styles = {
     background: '#0284c7',
     border: 'none',
     fontSize: '14px',
+    fontFamily: 'var(--font-heading)',
     fontWeight: 600,
     cursor: 'pointer',
     padding: '8px 16px',
@@ -242,6 +259,18 @@ const styles = {
     alignItems: 'center',
     gap: '12px',
   },
+  themeToggleBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '38px',
+    height: '38px',
+    borderRadius: '10px',
+    background: 'var(--bg-surface-hover)',
+    border: '1px solid var(--border-glass)',
+    cursor: 'pointer',
+    transition: 'var(--transition-smooth)',
+  },
   loginBtn: {
     display: 'flex',
     alignItems: 'center',
@@ -251,6 +280,7 @@ const styles = {
     padding: '9px 20px',
     borderRadius: '8px',
     color: '#ffffff',
+    fontFamily: 'var(--font-heading)',
     fontSize: '14px',
     fontWeight: 600,
     cursor: 'pointer',

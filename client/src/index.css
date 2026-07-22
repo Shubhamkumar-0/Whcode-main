@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-:root {
+:root, [data-theme="light"] {
   --bg-main: #f8fafc;
   --bg-surface: #ffffff;
   --bg-surface-hover: #f1f5f9;
-  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-card-header: #fff7ed;
   --border-glass: #e2e8f0;
   --border-glass-hover: #ff6b00;
   
@@ -12,7 +12,7 @@
   --primary-hover: #ea580c;
   --secondary: #0284c7; /* UMS Ocean Blue */
   --secondary-hover: #0369a1;
-  --accent: #0284c7; /* UMS Ocean Blue */
+  --accent: #0284c7;
   --accent-hover: #0369a1;
   --danger: #ef4444;
   --warning: #f59e0b;
@@ -28,6 +28,43 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
   
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --top-banner-bg: linear-gradient(90deg, #fed7aa 0%, #fde68a 100%);
+  --top-banner-text: #9a3412;
+  --top-banner-border: #fbd5a5;
+  --nav-bg: #ffffff;
+  --nav-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-main: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-hover: #1f2937;
+  --bg-card-header: rgba(255, 107, 0, 0.12);
+  --border-glass: #1f2937;
+  --border-glass-hover: #ff6b00;
+  
+  --primary: #ff6b00;
+  --primary-hover: #ff8533;
+  --secondary: #38bdf8;
+  --secondary-hover: #0284c7;
+  --accent: #38bdf8;
+  --accent-hover: #0284c7;
+  --danger: #f87171;
+  --warning: #fbbf24;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --shadow-neon: 0 4px 20px rgba(255, 107, 0, 0.25);
+  --shadow-neon-strong: 0 6px 25px rgba(255, 107, 0, 0.35);
+
+  --top-banner-bg: linear-gradient(90deg, #431407 0%, #78350f 100%);
+  --top-banner-text: #fed7aa;
+  --top-banner-border: #78350f;
+  --nav-bg: #111827;
+  --nav-border: #1f2937;
 }
 
 * {
