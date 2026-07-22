@@ -649,7 +649,7 @@ const styles = {
   metaValue: {
     fontSize: '13px',
     fontWeight: '700',
-    color: '#fff',
+    color: '#0f172a',
     marginTop: '2px',
   },
   syllabusSection: {
@@ -660,7 +660,7 @@ const styles = {
   sectionHeader: {
     fontSize: '14px',
     fontWeight: '600',
-    color: '#fff',
+    color: '#0f172a',
   },
   syllabusText: {
     fontSize: '12px',
@@ -718,9 +718,9 @@ const styles = {
     transition: 'var(--transition-smooth)',
   },
   activeTabBtn: {
-    background: 'var(--primary)',
-    color: '#fff',
-    boxShadow: '0 4px 12px rgba(99, 102, 241, 0.25)',
+    background: '#ff6b00',
+    color: '#ffffff',
+    boxShadow: '0 4px 12px rgba(255, 107, 0, 0.25)',
   },
   tabContentArea: {
     animation: 'fadeIn 0.3s ease-out',
@@ -732,7 +732,7 @@ const styles = {
   tabTitleText: {
     fontSize: '20px',
     fontWeight: '700',
-    color: '#fff',
+    color: '#0f172a',
   },
   tabSubtitleText: {
     fontSize: '14px',
@@ -841,7 +841,7 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     background: 'var(--primary)',
-    color: '#fff',
+    color: '#0f172a',
     border: 'none',
     padding: '8px 16px',
     borderRadius: '8px',
@@ -906,7 +906,7 @@ const styles = {
   pyqTitle: {
     fontSize: '16px',
     fontWeight: '700',
-    color: '#fff',
+    color: '#0f172a',
     marginBottom: '4px',
   },
   pyqMeta: {
@@ -922,7 +922,7 @@ const styles = {
     gap: '8px',
     background: 'rgba(255, 255, 255, 0.04)',
     border: '1px solid rgba(255, 255, 255, 0.08)',
-    color: '#fff',
+    color: '#0f172a',
     padding: '8px',
     borderRadius: '8px',
     fontSize: '13px',
@@ -950,7 +950,7 @@ const styles = {
   resultTitle: {
     fontSize: '22px',
     fontWeight: '700',
-    color: '#fff',
+    color: '#0f172a',
   },
   resultScore: {
     fontSize: '16px',
@@ -992,7 +992,7 @@ const styles = {
   },
   questionText: {
     fontSize: '17px',
-    color: '#fff',
+    color: '#0f172a',
     lineHeight: '1.5',
     fontWeight: '600',
   },
@@ -1039,7 +1039,7 @@ const styles = {
   },
   optionLabelText: {
     fontSize: '14px',
-    color: '#fff',
+    color: '#0f172a',
   },
   optionStatusIcon: {
     marginLeft: 'auto',
@@ -1109,7 +1109,7 @@ const styles = {
     bottom: '8px',
     right: '8px',
     background: 'rgba(0, 0, 0, 0.75)',
-    color: '#fff',
+    color: '#0f172a',
     fontSize: '11px',
     padding: '2px 6px',
     borderRadius: '4px',
@@ -1122,7 +1122,7 @@ const styles = {
   videoTitle: {
     fontSize: '14px',
     fontWeight: '600',
-    color: '#fff',
+    color: '#0f172a',
     lineHeight: '1.4',
     marginBottom: '4px',
   },
@@ -1144,11 +1144,13 @@ const styles = {
   readerModal: {
     maxWidth: '750px',
     width: '100%',
-    background: '#090f1e',
+    background: '#ffffff',
+    border: '1px solid #e2e8f0',
+    borderRadius: '16px',
+    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.15)',
     maxHeight: '90vh',
     display: 'flex',
     flexDirection: 'column',
-    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
   },
   modalHeader: {
     display: 'flex',
@@ -1160,7 +1162,7 @@ const styles = {
   modalTitle: {
     fontSize: '18px',
     fontWeight: '700',
-    color: '#fff',
+    color: '#0f172a',
   },
   closeModalBtn: {
     background: 'none',
@@ -1280,7 +1282,7 @@ const styles = {
     fontSize: '13px',
   },
   toastText: {
-    color: '#fff',
+    color: '#0f172a',
     flexGrow: 1,
     textAlign: 'left',
   },

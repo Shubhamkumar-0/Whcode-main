@@ -84,10 +84,10 @@ function Footer() {
 
 const styles = {
   footer: {
-    background: '#040810',
-    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+    background: '#ffffff',
+    borderTop: '2px solid #e5e7eb',
     padding: '60px 24px 20px 24px',
-    color: 'var(--text-secondary)',
+    color: '#475569',
     fontFamily: 'var(--font-body)',
   },
   content: {
@@ -97,10 +97,6 @@ const styles = {
     gridTemplateColumns: '1.5fr 1fr 1fr',
     gap: '40px',
     textAlign: 'left',
-    '@media (max-width: 768px)': {
-      gridTemplateColumns: '1fr',
-      gap: '30px',
-    }
   },
   brandCol: {
     display: 'flex',
@@ -115,16 +111,16 @@ const styles = {
   brandText: {
     fontWeight: 800,
     fontSize: '20px',
-    color: '#fff',
+    color: '#0f172a',
     fontFamily: 'var(--font-heading)',
   },
   orangeText: {
-    color: '#f97316',
+    color: '#ff6b00',
   },
   brandDesc: {
     fontSize: '14px',
     lineHeight: '1.6',
-    color: 'var(--text-secondary)',
+    color: '#475569',
     maxWidth: '380px',
   },
   socials: {
@@ -135,19 +131,15 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '8px',
-    background: 'rgba(99, 102, 241, 0.1)',
-    border: '1px solid rgba(99, 102, 241, 0.2)',
+    background: '#fff7ed',
+    border: '1px solid #ffedd5',
     padding: '8px 16px',
     borderRadius: '8px',
-    color: 'var(--primary)',
+    color: '#ff6b00',
     fontSize: '13px',
-    fontWeight: '600',
+    fontWeight: '700',
     textDecoration: 'none',
     transition: 'var(--transition-smooth)',
-    ':hover': {
-      background: 'rgba(99, 102, 241, 0.2)',
-      transform: 'translateY(-1px)',
-    }
   },
   linksCol: {
     display: 'flex',
@@ -156,10 +148,11 @@ const styles = {
   },
   colHeader: {
     fontSize: '15px',
-    fontWeight: '700',
-    color: '#fff',
+    fontWeight: '800',
+    color: '#0f172a',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
+    fontFamily: 'var(--font-heading)',
   },
   list: {
     listStyle: 'none',
@@ -175,33 +168,32 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     textDecoration: 'none',
-    color: 'var(--text-secondary)',
+    color: '#475569',
     fontSize: '14px',
+    fontWeight: '500',
     transition: 'var(--transition-smooth)',
-    ':hover': {
-      color: '#fff',
-    }
   },
   disclaimerLink: {
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    color: 'var(--text-muted)',
+    color: '#64748b',
   },
   bottomBar: {
     maxWidth: '1200px',
     margin: '0 auto',
-    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+    borderTop: '1px solid #e2e8f0',
     paddingTop: '20px',
     display: 'flex',
     flexDirection: 'column',
     gap: '6px',
     fontSize: '13px',
     textAlign: 'center',
+    color: '#64748b',
   },
   note: {
     fontSize: '11px',
-    color: 'var(--text-muted)',
+    color: '#94a3b8',
   }
 };
 

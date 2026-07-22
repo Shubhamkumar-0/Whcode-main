@@ -4,7 +4,7 @@ import { BookOpen, FileText, CheckSquare, Video } from 'lucide-react';
 function Features() {
   const featuresList = [
     {
-      icon: <BookOpen size={28} color="#6366f1" />,
+      icon: <BookOpen size={28} color="#ff6b00" />,
       title: "Revision Notes",
       description: "Carefully structured unit-wise notes covering key LPU syllabus concepts with quick highlights."
     },
@@ -14,7 +14,7 @@ function Features() {
       description: "Test your knowledge with chapter-wise quizzes, real-time grading, and detailed explanations."
     },
     {
-      icon: <FileText size={28} color="#a855f7" />,
+      icon: <FileText size={28} color="#0284c7" />,
       title: "Semester PYQs",
       description: "Previous Year Questions for Mid-term and End-term exams to understand paper patterns."
     },
@@ -59,7 +59,7 @@ function Features() {
 
 const styles = {
   container: {
-    padding: "80px 24px",
+    padding: "60px 24px",
     textAlign: "center",
     maxWidth: "1200px",
     margin: "0 auto",
@@ -68,11 +68,12 @@ const styles = {
     fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
     fontWeight: "800",
     marginBottom: "12px",
-    color: "#fff",
+    color: "#0f172a",
+    fontFamily: "var(--font-heading)",
   },
   sectionSubtitle: {
     fontSize: "16px",
-    color: "var(--text-secondary)",
+    color: "#475569",
     maxWidth: "600px",
     margin: "0 auto 48px auto",
   },
@@ -89,14 +90,17 @@ const styles = {
     textAlign: "left",
     padding: "32px",
     cursor: "pointer",
-    background: "rgba(11, 19, 43, 0.4)",
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
+    borderRadius: "16px",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.03)",
   },
   iconContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "rgba(255, 255, 255, 0.03)",
-    border: "1px solid rgba(255, 255, 255, 0.06)",
+    background: "#fff7ed",
+    border: "1px solid #ffedd5",
     width: "56px",
     height: "56px",
     borderRadius: "16px",
@@ -105,12 +109,13 @@ const styles = {
   cardTitle: {
     fontSize: "19px",
     fontWeight: "700",
-    color: "#fff",
+    color: "#0f172a",
     marginBottom: "10px",
+    fontFamily: "var(--font-heading)",
   },
   cardDesc: {
     fontSize: "14px",
-    color: "var(--text-secondary)",
+    color: "#475569",
     lineHeight: "1.5",
   }
 };
