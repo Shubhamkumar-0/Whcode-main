@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
@@ -8,26 +8,58 @@ const Register = () => {
   const [regNo, setRegNo] = useState('');
   const [branch, setBranch] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);  
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { register } = useAuth();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-    const payload = { name, email, regNo, branch, password };
-    const data = await register(payload);
-    if (data && data.token) {
-      navigate('/dashboard');
-    } else {
-      setError(data?.message || 'Registration failed');
-    }
+  e.preventDefault();
+
+  setError(null);
+
+  if (
+    !name.trim() ||
+    !email.trim() ||
+    !regNo.trim() ||
+    !branch
+  ) {
+    setError("Please fill all fields.");
+    return;
+  }
+
+  if (password.length < 8) {
+    setError("Password must be at least 8 characters.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+
+  setLoading(true);
+
+  const payload = {
+    name: name.trim(),
+    email: email.trim(),
+    regNo: regNo.trim(),
+    branch,
+    password,
   };
+
+  const data = await register(payload);
+
+  setLoading(false);
+
+  if (data && data.token) {
+    navigate("/dashboard");
+  } else {
+    setError(data?.message || "Registration failed.");
+  }
+};
 
   return (
     <div className="register-page glassmorphism">
@@ -35,7 +67,7 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -57,14 +89,21 @@ const Register = () => {
           required
           className="input"
         />
-        <input
-          type="text"
-          placeholder="Branch"
+        <select
           value={branch}
           onChange={(e) => setBranch(e.target.value)}
           required
           className="input"
-        />
+        >
+          <option value="">Select Branch</option>
+          <option value="CSE">Computer Science</option>
+          <option value="IT">Information Technology</option>
+          <option value="ECE">Electronics & Communication</option>
+          <option value="EEE">Electrical Engineering</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+        </select>
+
         <input
           type="password"
           placeholder="Password"
@@ -85,7 +124,7 @@ const Register = () => {
         {error && <p className="error">{error}</p>}
       </form>
       <p>
-        Already have an account? <a href="/login">Login here</a>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );
